@@ -1,0 +1,71 @@
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: demo-container-db
+
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "SenhaForte123!"
+
+    ports:
+      - "1433:1433"
+
+    volumes:
+      - demo_sqlserver_data:/var/opt/mssql
+      - ./tarefas-db/sql:/var/opt/mssql/backup
+      
+    command: >
+        /bin/bash -c "
+        /opt/mssql/bin/sqlservr &
+        sleep 60 &&
+        /opt/mssql-tools18/bin/sqlcmd
+        -S localhost
+        -U sa
+        -P 'SenhaForte123!'
+        -C
+        -i /var/opt/mssql/backup/restore.sql;
+        wait
+        "
+
+    networks:
+      - demo-network
+
+  api:
+    build:
+      context: ./tarefas-api
+      dockerfile: ./Presentation/Dockerfile
+
+    container_name: demo-container-api
+
+    ports:
+      - "5000:8080"
+
+    depends_on:
+      - sqlserver
+
+    networks:
+      - demo-network
+     
+  webapp:
+    build: 
+     context: ./tarefas-webapp
+     dockerfile: Dockerfile
+     
+    container_name: demo-container-webapp
+
+    ports:
+      - "8080:80"
+      
+    depends_on:
+      - api
+
+    networks:
+      - demo-network   
+
+volumes:
+  demo_sqlserver_data:
+
+networks:
+  demo-network:
+    driver: bridge

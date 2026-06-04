@@ -1,0 +1,46 @@
+<div class="modal fade" id="modalAtualizarTarefas" tabindex="-1">
+    <div class="modal-dialog" style="max-width: 95% !important; --bs-modal-width: 95% !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-header">Tarefas/<b>Atualizar</b></div>
+                    <div class="card-body">
+
+                            <form id="frmAtualizarTarefas">
+                                <input type="hidden" id="guidId" />
+                                <input type="hidden" id="dataCadastro" />
+                                <div class="row">
+                                    <div class="col-1 d-flex justify-content-start">
+                                        <div class="form-check form-switch form-control-lg mt-4">                    
+                                            <input type="checkbox" id="statusCadastro" class="form-check-input" />
+                                            <label for="statusCadastro" class="form-check-label">Status</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" id="nome" class="form-control" maxlength="100" required />
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="valor">Valor</label>
+                                        <input type="text" id="valor" class="form-control valor-mask" required />
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>&nbsp;
+                                        <button type="button" id="btnAtualizar" class="btn btn-outline-primary">Atualizar</button>
+                                    </div>
+                                </div>
+                            </form>    
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>  
+</div>

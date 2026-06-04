@@ -1,0 +1,40 @@
+<div class="modal fade" id="modalCriarTarefas" tabindex="-1">
+    <div class="modal-dialog" style="max-width: 95% !important; --bs-modal-width: 95% !important">
+        <div class="modal-content">
+            <div class="modal-header">            
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-header">Tarefas/<b>Criar</b></div>
+                    <div class="card-body">
+                            
+                        <form id="frmCriarTarefas">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" id="nome" class="form-control" maxlength="100" required />
+                                </div>
+                                <div class="col-6">
+                                    <label for="valor">Valor</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="text" id="valor" class="form-control valor-mask" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>&nbsp;
+                                    <button type="button" id="btnCriar" class="btn btn-outline-primary">Criar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
